@@ -6,6 +6,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private MediaPlayer mp;
@@ -19,12 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button3:
+            case R.id.btnPlay:
                 mp.start();
-            case R.id.button2:
+                break;
+            case R.id.btnStop:
                 mp.stop();
-            case R.id.button:
+                try {
+                    mp.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.btnPause:
                 mp.pause();
+                break;
         }
     }
 
