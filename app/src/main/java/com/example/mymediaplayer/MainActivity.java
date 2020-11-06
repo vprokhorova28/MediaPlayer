@@ -22,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnPlay:
-                mp.start();
-                break;
+                if (!mp.isPlaying()) {
+                    mp.start();
+                    break;
+                }
             case R.id.btnStop:
                 mp.stop();
                 try {
